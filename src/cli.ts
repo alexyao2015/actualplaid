@@ -2,7 +2,6 @@ import plaid from "plaid";
 import path from "path";
 import Fastify from "fastify";
 import fastifyStatic from "fastify-static";
-import opn from "better-opn";
 import dateFns from "date-fns";
 import inquirer from "inquirer";
 import terminalLink from "terminal-link";
@@ -35,7 +34,7 @@ fastify.register(fastifyStatic, {
 });
 
 const startFastifyServer = async () => {
-  await fastify.listen(appConfig.APP_PORT);
+  await fastify.listen(appConfig.APP_PORT, "0.0.0.0");
 };
 
 const printSyncedAccounts = () => {
@@ -105,21 +104,10 @@ async function startLinkingPlaid() {
     throw new Error("Plaid Linking cancelled");
   }
 
-  //If running locally, open the browser to localhost.
-  if (`${appConfig.APP_URL}` == "http://localhost") {
-    const plaidLinkLink = `http://localhost:${appConfig.APP_PORT}`;
-    console.log(
-      `Opening ${plaidLinkLink} to link with Plaid...\nNOTE: Please return to your CLI when completed.`
-    );
-    opn(plaidLinkLink);
-  } else {
-    //If not running locally / needing https, let the user open it themselves.
-
-    const plaidLinkLink = `${appConfig.APP_URL}`;
-    console.log(
-      `Open ${plaidLinkLink} to link with Plaid in a browser...\nNOTE: Please return to your CLI when completed.`
-    );
-  }
+  const plaidLinkLink = `${appConfig.APP_URL}`;
+  console.log(
+    `Open ${plaidLinkLink} to link with Plaid in a browser...\nNOTE: Please return to your CLI when completed.`
+  );
 
   let doneLinking = false;
 
