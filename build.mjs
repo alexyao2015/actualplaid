@@ -4,7 +4,7 @@ const context = await esbuild.context({
   entryPoints: ["src/index.ts"],
   bundle: true,
   minify: true,
-  outfile: "index.js",
+  outfile: "actualplaid",
   legalComments: "none",
   logLevel: "info",
   platform: "node",

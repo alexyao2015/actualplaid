@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import meow from "meow";
 import { actualPlaid } from "./cli.js";
 const cli = meow(

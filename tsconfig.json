@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "noImplicitAny": true,
+    "lib": ["es2020"],
+    "allowJs": false,
+    "noEmit": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*"]
+}
