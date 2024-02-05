@@ -6,11 +6,15 @@
 	"bin": {
 		"actualplaid": "cli.js"
 	},
+	"scripts": {
+		"buildforce": "node build.mjs",
+		"build": "tsc && node build.mjs",
+		"watch": "node build.mjs --watch"
+	},
 	"author": "Luke Herrington <lherrington100@gmail.com>",
 	"license": "MIT",
 	"dependencies": {
 		"@actual-app/api": "^6.3.0",
-		"better-opn": "^2.0.0",
 		"conf": "^7.1.1",
 		"date-fns": "^2.15.0",
 		"dotenv": "^16.3.1",
@@ -23,5 +27,10 @@
 	},
 	"engines": {
 		"node": ">=10"
+	},
+	"devDependencies": {
+		"@types/inquirer": "^9.0.7",
+		"esbuild": "^0.20.0",
+		"typescript": "^5.3.3"
 	}
 }
